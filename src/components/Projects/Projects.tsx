@@ -1,13 +1,15 @@
 // Projects.jsx
 import { useEffect, useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProjectCard from './ProjectCard'; // Certifique-se que este caminho está correto
 
 const PROJECTS_PER_LOAD = 6; // Quantos projetos mostrar por vez
-
 const Projects = () => {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
   const [visibleProjectsCount, setVisibleProjectsCount] = useState(PROJECTS_PER_LOAD);
   const [isVisible, setIsVisible] = useState(false); // Para a animação da secção
+
 
   // Dados dos projetos com os links readdy.ai fornecidos e links de projeto
   const allProjects = useMemo(() => [
@@ -117,8 +119,8 @@ const Projects = () => {
     };
   }, []);
 
-  const handleLoadMore = () => {
-    setVisibleProjectsCount(prevCount => prevCount + PROJECTS_PER_LOAD);
+  const handleAllProjectsPage = () => {
+    navigate("/projects");
   };
 
   return (
@@ -175,7 +177,7 @@ const Projects = () => {
         {filteredProjects.length > projectsToDisplay.length && (
           <div className="text-center mt-12">
             <button
-              onClick={handleLoadMore}
+              onClick={handleAllProjectsPage}
               className="bg-gray-800 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50"
             >
              Ver mais

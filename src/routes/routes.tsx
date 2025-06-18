@@ -1,7 +1,8 @@
 import Contact from "@/components/Contact";
-import Projects from "@/components/Projects/Projects";
+// import Projects from "@/components/Projects/Projects";
 import Skills from "@/components/Skills/Skills";
-import About from "@/pages/About";
+// import About from "@/pages/About";
+import ComingSoon from "@/pages/ComingSoon";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import type { RouteObject } from "react-router-dom";
@@ -13,7 +14,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/about",
-    element: <About />,
+    element: <ComingSoon />,
   },
   {
     path: "/skills",
@@ -21,7 +22,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/projects",
-    element: <Projects />,
+    element: <ComingSoon />,
   },
   {
     path: "/contact",

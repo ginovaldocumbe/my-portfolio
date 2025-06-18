@@ -1,14 +1,103 @@
+// src/components/ComingSoon.jsx
+import  { useEffect, useState } from 'react';
+import { Sparkles, Github, Linkedin, X, Instagram } from 'lucide-react'; // Ícones para o brilho e redes sociais
+
 const ComingSoon = () => {
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    // Pequeno atraso para a animação de entrada do conteúdo
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 200); 
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="text-center p-8 rounded-lg shadow-md bg-white">
-        <h2 className="text-3xl font-bold mb-4">Página em Construção</h2>
-        <p className="text-gray-600 mb-6">Desculpe, esta página ainda não foi finalizada.</p>
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-br from-blue-900 to-gray-900 text-white p-6 relative overflow-hidden">
+      {/* Gradiente sutil para replicar as "manchas" de cor da imagem */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-cyan-800 to-transparent opacity-15 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-bl from-teal-800 to-transparent opacity-15 z-0"></div>
+
+      <div 
+        className={`relative z-10 text-center transition-all duration-1000 ease-out 
+                    ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
+        <div className="mb-8">
+          <Sparkles size={64} className="mx-auto text-blue-300 animate-pulse-slow-custom" />
+          {/* Animação CSS inline para o brilho do Sparkles */}
+          <style>{`
+            @keyframes pulse-slow-custom {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.6; }
+            }
+            .animate-pulse-slow-custom {
+              animation: pulse-slow-custom 3s infinite ease-in-out;
+            }
+          `}</style>
+        </div>
+        
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-blue-200 leading-tight tracking-tight">
+          Em Breve
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Prepare-se! Estamos a trabalhar em algo **fantástico** que vai surpreender. 
+          Volte em breve para a revelação.
+        </p>
+        
+        <p className="text-md text-gray-400 mb-16 italic">
+          (Aperfeiçoar uma obra-prima leva tempo. Perguntem ao Da Vinci... e ele nem tinha *bugs*!)
+        </p>
+
+        {/* Links de Redes Sociais */}
+        <div className="flex justify-center space-x-6 mb-12">
+          <a 
+            href="https://linkedin.com/in/o-ginovaldo" // Substitua pelos seus links reais
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="LinkedIn"
+            className="text-gray-400 hover:text-white transition-colors text-3xl transform hover:scale-110"
+          >
+            <Linkedin size={32} />
+          </a>
+          <a 
+            href="https://x.com/o-ginovaldo" // X (antigo Twitter)
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="X (Twitter)"
+            className="text-gray-400 hover:text-white transition-colors text-3xl transform hover:scale-110"
+          >
+            <X size={32} />
+          </a>
+          <a 
+            href="https://instagram.com/o-ginovaldo" // Instagram
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Instagram"
+            className="text-gray-400 hover:text-white transition-colors text-3xl transform hover:scale-110"
+          >
+            <Instagram size={32} />
+          </a>
+          <a 
+            href="https://github.com/o-ginovaldo" // GitHub
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="GitHub"
+            className="text-gray-400 hover:text-white transition-colors text-3xl transform hover:scale-110"
+          >
+            <Github size={32} />
+          </a>
+        </div>
+
+        {/* Botão para voltar */}
         <button
           onClick={() => window.history.back()}
-          className="bg-primary text-white px-6 py-2 rounded hover:bg-blue-600"
+          className="text-gray-400 border border-gray-600 px-8 py-3 rounded-md font-semibold text-base 
+                     hover:text-white hover:border-white transition-all duration-300 
+                     focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-70"
         >
-          Voltar
+          Voltar para a Página Anterior
         </button>
       </div>
     </div>

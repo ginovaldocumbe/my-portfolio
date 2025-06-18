@@ -8,10 +8,10 @@ const Header = () => {
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/" className="text-2xl font-(family-name:--font-pacifico) text-white">GC</a>
         <div className="hidden md:flex space-x-8">
-          <a href="/about" className="text-white hover:text-primary transition-colors">Sobre</a>
-          <a href="/skills" className="text-white hover:text-primary transition-colors">Habilidades</a>
-          <a href="/projects" className="text-white hover:text-primary transition-colors">Projetos</a>
-          <a href="/contact" className="text-white hover:text-primary transition-colors">Contato</a>
+          <a href="#about" className="text-white hover:text-primary transition-colors">Sobre</a>
+          <a href="#skills" className="text-white hover:text-primary transition-colors">Habilidades</a>
+          <a href="#projects" className="text-white hover:text-primary transition-colors">Projetos</a>
+          <a href="#contact" className="text-white hover:text-primary transition-colors">Contato</a>
         </div>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -25,10 +25,10 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="bg-white shadow-lg absolute w-full">
           <div className="container mx-auto px-6 py-4 flex flex-col space-y-4 text-gray-800">
-            <a href="/about">Sobre</a>
-            <a href="/skills">Habilidades</a>
-            <a href="/projects">Projetos</a>
-            <a href="/contact">Contato</a>
+            <a href="#about">Sobre</a>
+            <a href="#skills">Habilidades</a>
+            <a href="#projects">Projetos</a>
+            <a href="#contact">Contato</a>
           </div>
         </div>
       )}
