@@ -1,34 +1,34 @@
-import Contact from '@/components/Contact';
-import Projects from '@/components/Projects';
-import Skills from '@/components/Skills';
-import About from '@/pages/About';
-import Home from '@/pages/Home';
-import NotFound from '@/pages/NotFound';
-import type { RouteObject } from 'react-router-dom';
+import Contact from "@/components/Contact";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills/Skills";
+import About from "@/pages/About";
+import Home from "@/pages/Home";
+import NotFound from "@/pages/NotFound";
+import type { RouteObject } from "react-router-dom";
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: "/",
     element: <Home />,
   },
   {
-    path: '/about',
+    path: "/about",
     element: <About />,
   },
   {
-    path: '/skills',
+    path: "/skills",
     element: <Skills />,
   },
   {
-    path: '/projects',
+    path: "/projects",
     element: <Projects />,
   },
   {
-    path: '/contact',
+    path: "/contact",
     element: <Contact />,
   },
   {
-    path: '*',
+    path: "*",
     element: <NotFound />,
   },
 ];
