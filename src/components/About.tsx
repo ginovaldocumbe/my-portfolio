@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+// Importar o ícone para download do Lucide React
+import { Download } from "lucide-react";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,10 +24,11 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-white">
+    // Alterado o fundo para um cinza muito claro
+    <section id="about" className="py-20 bg-gray-100">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          About Me
+          Sobre Mim
         </h2>
         <div
           className={`flex flex-col md:flex-row items-center gap-12 ${
@@ -35,38 +38,45 @@ const About = () => {
         >
           <div className="w-full md:w-1/3">
             <img
-              src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20male%20developer%20in%20his%2030s%20with%20a%20friendly%20smile%2C%20wearing%20casual%20smart%20attire%2C%20clean%20background%2C%20high%20quality%20professional%20headshot%2C%20natural%20lighting&width=600&height=800&seq=1002&orientation=portrait"
-              alt="Alex Mitchell"
+              // Avatar sugerido - pode substituir por um seu
+              src="https://api.dicebear.com/8.x/avataaars/svg?seed=Ginovaldo&radius=50&"
+              alt="Avatar do Ginovaldo"
               className="rounded-lg shadow-lg w-full"
             />
           </div>
           <div className="w-full md:w-2/3">
-            <h3 className="text-2xl font-bold mb-4">Who I Am</h3>
+            <h3 className="text-2xl font-bold mb-4">Quem Sou Eu</h3>
             <p className="text-gray-700 mb-6">
-              I'm a passionate Full Stack Developer with over 8 years of
-              experience building web applications that deliver exceptional user
-              experiences. Based in San Francisco, I specialize in creating
-              scalable, maintainable solutions that solve real-world problems.
+              Olá! Sou o Ginovaldo Stélio Cumbe, um Developer Full Stack
+              apaixonado e Web Designer com mais de 2 anos de experiência em
+              criar soluções digitais robustas e visualmente apelativas. A minha
+              paixão reside em transformar ideias complexas em experiências de
+              utilizador intuitivas e eficientes, focando sempre em código
+              limpo, escalável e de fácil manutenção.
             </p>
-            <h3 className="text-2xl font-bold mb-4">My Journey</h3>
+            <h3 className="text-2xl font-bold mb-4">A Minha Jornada</h3>
             <p className="text-gray-700 mb-6">
-              My coding journey began at Stanford University where I earned my
-              Computer Science degree. Since then, I've worked with startups and
-              enterprise companies alike, helping them transform their digital
-              presence through clean, efficient code and intuitive interfaces.
+              A minha jornada no desenvolvimento começou por iniciativa própria,
+              impulsionada pela curiosidade e pelo desejo de construir. Desde
+              então, tenho aprofundado os meus conhecimentos em tecnologias
+              front-end e back-end, com particular foco em desenvolvimento web e
+              mobile com Quasar. Tenho dedicado o meu tempo a ajudar projetos a
+              solidificar a sua presença digital, entregando não só
+              funcionalidade, mas também um design que realmente se destaca e
+              impacta.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
               <div className="text-center">
                 <p className="text-4xl font-bold text-primary">2+</p>
-                <p className="text-gray-600">Years Experience</p>
+                <p className="text-gray-600">Anos de Experiência</p>
               </div>
               <div className="text-center">
                 <p className="text-4xl font-bold text-primary">10+</p>
-                <p className="text-gray-600">Projects Completed</p>
+                <p className="text-gray-600">Projetos Concluídos</p>
               </div>
               <div className="text-center">
                 <p className="text-4xl font-bold text-primary">3+</p>
-                <p className="text-gray-600">Happy Clients</p>
+                <p className="text-gray-600">Clientes Satisfeitos</p>
               </div>
             </div>
             <a
@@ -74,9 +84,10 @@ const About = () => {
               className="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-button font-medium hover:bg-gray-700 transition-colors whitespace-nowrap"
             >
               <div className="w-5 h-5 mr-2 flex items-center justify-center">
-                <i className="ri-download-line"></i>
+                {/* Ícone Lucide React para Download */}
+                <Download className="w-5 h-5" />
               </div>
-              Download CV
+              Descarregar CV
             </a>
           </div>
         </div>
