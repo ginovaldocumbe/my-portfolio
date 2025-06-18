@@ -1,3 +1,4 @@
+import { MapPinned } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Contact = () => {
@@ -65,7 +66,7 @@ const Contact = () => {
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="w-10 h-10 flex items-center justify-center text-primary mr-4">
-                    <i className="ri-map-pin-line ri-lg"></i>
+                    <MapPinned />
                   </div>
                   <div>
                     <h4 className="font-medium">Location</h4>

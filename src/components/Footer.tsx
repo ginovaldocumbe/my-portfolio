@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-8 md:mb-0">
-            <a href="/" className="text-2xl font-pacifico">AM</a>
+            <a href="/" className="text-2xl font-(family-name:--font-pacifico)">GC</a>
             <p className="mt-2 text-gray-400 max-w-md">
               Building exceptional digital experiences with clean, efficient, and scalable code.
             </p>
@@ -33,7 +33,7 @@ const Footer = () => {
               </a>
             </div>
             <p className="text-gray-500 text-sm">
-              © 2025 Alex Mitchell. All rights reserved.
+              © 2025 Ginovaldo Cumbe. All rights reserved.
             </p>
           </div>
         </div>

@@ -44,7 +44,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="container mx-auto px-6 z-10">
         <div className="w-full md:w-2/3 text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Alex Mitchell</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Ginovaldo Stélio Cumbe</h1>
           <div className="text-2xl md:text-4xl font-light mb-6">
             <span className="typing-effect">{currentText}</span>
             <span className="animate-pulse">|</span>
