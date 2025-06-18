@@ -31,7 +31,7 @@ const About = () => {
   }, []); // O array de dependências está vazio, então roda apenas uma vez no mount
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-gray-100">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
           Sobre Mim
