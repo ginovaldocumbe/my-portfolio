@@ -1,12 +1,15 @@
 import { useEffect, useState, useMemo } from "react";
+// Importar os ícones Lucide React que serão usados
+import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
   const texts = useMemo(
     () => [
-      "Full Stack Developer",
-      "UI/UX Engineer",
-      "Mobile App Developer",
-      "Web Designer",
+      "Developer Full Stack", // Alterado e traduzido
+      "Web Designer", // Traduzido
+      "Developer Mobile (Quasar)", // Adicionado com a sua sugestão e esclarecimento
+      "Engenheiro UI/UX", // Sugestão para uma habilidade relacionada
+      "Especialista em Experiência Digital", // Sugestão para um toque mais abrangente
     ],
     []
   );
@@ -50,21 +53,20 @@ const Hero = () => {
             <span className="animate-pulse">|</span>
           </div>
           <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl">
-            Crafting elegant, efficient, and user-centered digital experiences
-            with clean code and modern technologies.
+            Crio experiências digitais elegantes, eficientes e centradas no utilizador, com código limpo e tecnologias modernas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="#projects"
               className="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap"
             >
-              View Portfolio
+              Ver Portefólio
             </a>
             <a
               href="#contact"
               className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-button font-medium hover:bg-white hover:text-gray-900 transition-colors whitespace-nowrap"
             >
-              Let's Connect
+              Vamos Conectar
             </a>
           </div>
         </div>
@@ -75,7 +77,8 @@ const Hero = () => {
           className="text-white opacity-80 hover:opacity-100 transition-opacity"
         >
           <div className="w-10 h-10 flex items-center justify-center">
-            <i className="ri-arrow-down-line ri-lg"></i>
+            {/* Ícone Lucide React para a seta para baixo */}
+            <ChevronDown className="w-8 h-8" />
           </div>
         </a>
       </div>
