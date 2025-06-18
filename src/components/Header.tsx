@@ -1,38 +1,88 @@
-import { useState } from 'react';
+import { Menu, Layout } from "antd";
 
 const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const items = [
+    {
+      key: "about",
+      label: (
+        <a
+          href="#about"
+          className="text-white hover:text-primary transition-colors"
+        >
+          Sobre
+        </a>
+      ),
+    },
+    {
+      key: "skills",
+      label: (
+        <a
+          href="#skills"
+          className="text-white hover:text-primary transition-colors"
+        >
+          Habilidades
+        </a>
+      ),
+    },
+    {
+      key: "projects",
+      label: (
+        <a
+          href="#projects"
+          className="text-white hover:text-primary transition-colors"
+        >
+          Projectos
+        </a>
+      ),
+    },
+    {
+      key: "contact",
+      label: (
+        <a
+          href="#contact"
+          className="text-white hover:text-primary transition-colors"
+        >
+          Contactos
+        </a>
+      ),
+    },
+  ];
 
   return (
-    <header className="fixed w-full z-50 transition-all duration-300 bg-transparent">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/" className="text-2xl font-(family-name:--font-pacifico) text-white">GC</a>
-        <div className="hidden md:flex space-x-8">
-          <a href="#about" className="text-white hover:text-primary transition-colors">Sobre</a>
-          <a href="#skills" className="text-white hover:text-primary transition-colors">Habilidades</a>
-          <a href="#projects" className="text-white hover:text-primary transition-colors">Projetos</a>
-          <a href="#contact" className="text-white hover:text-primary transition-colors">Contato</a>
-        </div>
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white"
+    <Layout.Header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+        width: "100%",
+        paddingLeft: 5,
+        paddingRight: 5,
+        background: "rgba(255, 255, 255, 0.2)", // Escurecido para contraste
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)", // Elevation aqui
+        backdropFilter: "blur(10px)", // efeito opcional de vidro
+        transition: "box-shadow 0.3s ease-in-out",
+      }}
+    >
+      <div className="flex items-center w-full">
+        <a
+          href="/"
+          className="text-2xl font-(family-name:--font-pacifico) text-white"
         >
-          {mobileMenuOpen ? '✕' : '☰'}
-        </button>
-      </nav>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="bg-white shadow-lg absolute w-full">
-          <div className="container mx-auto px-6 py-4 flex flex-col space-y-4 text-gray-800">
-            <a href="#about">Sobre</a>
-            <a href="#skills">Habilidades</a>
-            <a href="#projects">Projetos</a>
-            <a href="#contact">Contato</a>
-          </div>
-        </div>
-      )}
-    </header>
+          GC
+        </a>
+        <Menu
+          mode="horizontal"
+          defaultSelectedKeys={["about"]}
+          items={items}
+          style={{
+            justifyContent: "flex-end",
+            width: "100%",
+            backgroundColor: "transparent",
+            borderBottom: "none",
+          }}
+        />
+      </div>
+    </Layout.Header>
   );
 };
 
