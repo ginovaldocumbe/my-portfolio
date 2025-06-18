@@ -1,12 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("react/jsx-runtime");
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // Experience.jsx
-var react_1 = require("react");
-var ExperienceItem_1 = require("./ExperienceItem");
-var Experience = function () {
-    var _a = (0, react_1.useState)(false), isVisible = _a[0], setIsVisible = _a[1];
-    var professionalExperiences = (0, react_1.useMemo)(function () { return [
+import { useEffect, useState, useMemo } from "react";
+import ExperienceItem from "./ExperienceItem";
+const Experience = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const professionalExperiences = useMemo(() => [
         // Seus dados aqui (os mesmos de antes, já traduzidos e ajustados)
         {
             id: 1,
@@ -47,27 +45,26 @@ var Experience = function () {
                 "Contribuição para a documentação de código emanuais do usuário.",
             ],
         },
-    ]; }, []);
-    (0, react_1.useEffect)(function () {
-        var element = document.getElementById("experience-section");
+    ], []);
+    useEffect(() => {
+        const element = document.getElementById("experience-section");
         if (window.location.hash === "#experience" && element) {
             setIsVisible(true);
         }
-        var observer = new IntersectionObserver(function (_a) {
-            var entry = _a[0];
+        const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setIsVisible(true);
             }
         }, { threshold: 0.1 });
         if (element)
             observer.observe(element);
-        return function () {
+        return () => {
             if (element)
                 observer.unobserve(element);
         };
     }, []);
     return (
     // Fundo mais escuro para contraste com os cartões brancos
-    (0, jsx_runtime_1.jsx)("section", { id: "experience", className: "py-20", children: (0, jsx_runtime_1.jsxs)("div", { className: "container mx-auto px-6", children: [(0, jsx_runtime_1.jsx)("h2", { className: "text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800", children: "Experi\u00EAncia Profissional" }), (0, jsx_runtime_1.jsx)("div", { className: "space-y-12", id: "experience-section", children: professionalExperiences.map(function (exp, index) { return ((0, jsx_runtime_1.jsx)(ExperienceItem_1.default, { experience: exp, isVisible: isVisible, index: index }, exp.id)); }) })] }) }));
+    _jsx("section", { id: "experience", className: "py-20", children: _jsxs("div", { className: "container mx-auto px-6", children: [_jsx("h2", { className: "text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800", children: "Experi\u00EAncia Profissional" }), _jsx("div", { className: "space-y-12", id: "experience-section", children: professionalExperiences.map((exp, index) => (_jsx(ExperienceItem, { experience: exp, isVisible: isVisible, index: index }, exp.id))) })] }) }));
 };
-exports.default = Experience;
+export default Experience;

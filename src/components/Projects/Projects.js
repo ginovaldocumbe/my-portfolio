@@ -1,18 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("react/jsx-runtime");
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // Projects.jsx
-var react_1 = require("react");
-var react_router_dom_1 = require("react-router-dom");
-var ProjectCard_1 = require("./ProjectCard"); // Certifique-se que este caminho está correto
-var PROJECTS_PER_LOAD = 6; // Quantos projetos mostrar por vez
-var Projects = function () {
-    var navigate = (0, react_router_dom_1.useNavigate)();
-    var _a = (0, react_1.useState)('all'), filter = _a[0], setFilter = _a[1];
-    var _b = (0, react_1.useState)(PROJECTS_PER_LOAD), visibleProjectsCount = _b[0], setVisibleProjectsCount = _b[1];
-    var _c = (0, react_1.useState)(false), isVisible = _c[0], setIsVisible = _c[1]; // Para a animação da secção
+import { useEffect, useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ProjectCard from './ProjectCard'; // Certifique-se que este caminho está correto
+const PROJECTS_PER_LOAD = 6; // Quantos projetos mostrar por vez
+const Projects = () => {
+    const navigate = useNavigate();
+    const [filter, setFilter] = useState('all');
+    const [visibleProjectsCount, setVisibleProjectsCount] = useState(PROJECTS_PER_LOAD);
+    const [isVisible, setIsVisible] = useState(false); // Para a animação da secção
     // Dados dos projetos com os links readdy.ai fornecidos e links de projeto
-    var allProjects = (0, react_1.useMemo)(function () { return [
+    const allProjects = useMemo(() => [
         {
             title: "e-Commerce ShopSmart",
             description: "Uma plataforma de e-commerce completa com gestão de inventário em tempo real e painel de análises.",
@@ -87,37 +85,38 @@ var Projects = function () {
             githubLink: "https://github.com/o-ginovaldo/portfolio-v2-demo",
             liveLink: "https://ginovaldo.dev",
         },
-    ]; }, []);
-    var filteredProjects = (0, react_1.useMemo)(function () {
-        return allProjects.filter(function (project) { return filter === 'all' || project.category === filter; });
+    ], []);
+    const filteredProjects = useMemo(() => {
+        return allProjects.filter(project => filter === 'all' || project.category === filter);
     }, [allProjects, filter]);
-    var projectsToDisplay = (0, react_1.useMemo)(function () {
+    const projectsToDisplay = useMemo(() => {
         return filteredProjects.slice(0, visibleProjectsCount);
     }, [filteredProjects, visibleProjectsCount]);
-    (0, react_1.useEffect)(function () {
-        var element = document.getElementById("projects-section");
+    useEffect(() => {
+        const element = document.getElementById("projects-section");
         if (window.location.hash === "#projects" && element) {
             setIsVisible(true);
         }
-        var observer = new IntersectionObserver(function (_a) {
-            var entry = _a[0];
+        const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setIsVisible(true);
             }
         }, { threshold: 0.1 });
         if (element)
             observer.observe(element);
-        return function () {
+        return () => {
             if (element)
                 observer.unobserve(element);
         };
     }, []);
-    var handleAllProjectsPage = function () {
+    const handleAllProjectsPage = () => {
         navigate("/projects");
     };
-    return ((0, jsx_runtime_1.jsx)("section", { id: "projects", className: "py-10", children: (0, jsx_runtime_1.jsxs)("div", { className: " mx-auto px-6", children: [(0, jsx_runtime_1.jsx)("h2", { className: "text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800", children: "Meus Projetos" }), (0, jsx_runtime_1.jsx)("p", { className: "text-gray-700 text-center max-w-2xl mx-auto mb-16 leading-relaxed", children: "Apresento os meus melhores trabalhos em diversas tecnologias e ind\u00FAstrias. Cada projeto representa um desafio e uma solu\u00E7\u00E3o \u00FAnica que desenvolvi." }), (0, jsx_runtime_1.jsx)("div", { className: "flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up", style: { animationDelay: '0.2s' }, children: ['all', 'web', 'mobile', 'ui'].map(function (category) { return ((0, jsx_runtime_1.jsxs)("button", { onClick: function () {
+    return (_jsx("section", { id: "projects", className: "py-10", children: _jsxs("div", { className: " mx-auto px-6", children: [_jsx("h2", { className: "text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800", children: "Meus Projetos" }), _jsx("p", { className: "text-gray-700 text-center max-w-2xl mx-auto mb-16 leading-relaxed", children: "Apresento os meus melhores trabalhos em diversas tecnologias e ind\u00FAstrias. Cada projeto representa um desafio e uma solu\u00E7\u00E3o \u00FAnica que desenvolvi." }), _jsx("div", { className: "flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up", style: { animationDelay: '0.2s' }, children: ['all', 'web', 'mobile', 'ui'].map(category => (_jsxs("button", { onClick: () => {
                             setFilter(category);
                             setVisibleProjectsCount(PROJECTS_PER_LOAD);
-                        }, className: "px-6 py-2 rounded-full font-medium whitespace-nowrap transition-all duration-300 ease-in-out\n                ".concat(filter === category ? 'bg-primary text-grey-100 shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-300', "\n                focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"), children: [category === 'all' && 'Todos os Projetos', category === 'web' && 'Aplicações Web', category === 'mobile' && 'Aplicações Móveis', category === 'ui' && 'UI/UX Design'] }, category)); }) }), (0, jsx_runtime_1.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8", id: "projects-section", children: projectsToDisplay.map(function (project, index) { return ((0, jsx_runtime_1.jsx)(ProjectCard_1.default, { project: project, index: index, isVisible: isVisible }, project.title)); }) }), filteredProjects.length > projectsToDisplay.length && ((0, jsx_runtime_1.jsx)("div", { className: "text-center mt-12", children: (0, jsx_runtime_1.jsx)("button", { onClick: handleAllProjectsPage, className: "bg-gray-800 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50", children: "Ver mais" }) }))] }) }));
+                        }, className: `px-6 py-2 rounded-full font-medium whitespace-nowrap transition-all duration-300 ease-in-out
+                ${filter === category ? 'bg-primary text-grey-100 shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-300'}
+                focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50`, children: [category === 'all' && 'Todos os Projetos', category === 'web' && 'Aplicações Web', category === 'mobile' && 'Aplicações Móveis', category === 'ui' && 'UI/UX Design'] }, category))) }), _jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8", id: "projects-section", children: projectsToDisplay.map((project, index) => (_jsx(ProjectCard, { project: project, index: index, isVisible: isVisible }, project.title))) }), filteredProjects.length > projectsToDisplay.length && (_jsx("div", { className: "text-center mt-12", children: _jsx("button", { onClick: handleAllProjectsPage, className: "bg-gray-800 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50", children: "Ver mais" }) }))] }) }));
 };
-exports.default = Projects;
+export default Projects;
