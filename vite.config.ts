@@ -6,10 +6,7 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base:
-    process.env.NODE_ENV === "production"
-      ? "/my-portfolio/" // caminho para produção
-      : "/",
+  base: "/my-portfolio/", // caminho para produção
   plugins: [react(), tailwindcss(), tsconfigPaths()],
   resolve: {
     alias: {
